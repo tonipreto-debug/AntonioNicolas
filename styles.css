@@ -204,12 +204,76 @@ body {
 
 .bio-info-container {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem 4rem;
+    padding: 4rem;
     color: var(--text-main);
     overflow-y: auto;
+    height: 100vh;
+}
+
+/* Language Toggle */
+.language-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+    gap: 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.lang-option {
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.lang-option.active {
+    color: var(--text-main);
+}
+
+.toggle-switch {
+    width: 50px;
+    height: 26px;
+    background-color: #333;
+    /* Darker than sidebar for contrast */
+    border-radius: 13px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* By default, slider is on the left (ES). When "en" active, move right */
+.toggle-switch.en-active .toggle-slider {
+    transform: translateX(24px);
+}
+
+/* Bio Content wrapper */
+.bio-content-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.bio-content {
+    display: none;
+    /* Hidden by default */
+    animation: smoothFadeIn 0.5s ease-out forwards;
+}
+
+.bio-content.active {
+    display: block;
+    /* Show active language */
 }
 
 .bio-block {
@@ -224,15 +288,97 @@ body {
     letter-spacing: 0.5px;
 }
 
-.bio-block p {
+.bio-block p,
+.bio-list li {
     font-size: 14px;
     line-height: 1.6;
-    color: var(--text-muted);
+    color: var(--text-main);
+    /* Updated to main text color (white) */
+}
+
+.bio-list {
+    list-style-type: none;
+    /* Removes the bullet points */
+    padding-left: 0;
+    margin: 0;
+}
+
+.bio-list li {
+    margin-bottom: 5px;
+}
+
+.bio-list strong {
+    color: var(--text-main);
+    /* Ensures bolded titles are also white */
 }
 
 /* Keep previous technical data tight */
 .bio-block:last-child p {
     margin-bottom: 3px;
+}
+
+/* Curious Bio Block Styling */
+.curious-block {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px 25px;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.curious-block:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.curious-block h3 {
+    font-size: 15px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.curious-block h3 i {
+    color: var(--accent-color);
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+.bio-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.bio-list li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.bio-list li:last-child {
+    margin-bottom: 0;
+}
+
+.bio-list li::before {
+    content: "•";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+}
+
+.bio-list li strong {
+    color: var(--text-main);
+    font-weight: 600;
 }
 
 .bio-image-container {

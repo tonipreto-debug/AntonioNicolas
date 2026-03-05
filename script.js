@@ -38,4 +38,46 @@ document.addEventListener('DOMContentLoaded', () => {
             sidebar.classList.toggle('open');
         });
     }
+
+    // Bio Language Toggle Logic
+    const langToggle = document.getElementById('bio-lang-toggle');
+    const langOptions = document.querySelectorAll('.lang-option');
+    const bioEs = document.getElementById('bio-es');
+    const bioEn = document.getElementById('bio-en');
+
+    if (langToggle && bioEs && bioEn) {
+        langToggle.addEventListener('click', () => {
+            const isEnglish = langToggle.classList.contains('en-active');
+
+            if (isEnglish) {
+                // Switch to Spanish
+                langToggle.classList.remove('en-active');
+                bioEn.classList.remove('active');
+                bioEs.classList.add('active');
+
+                langOptions[0].classList.add('active');
+                langOptions[1].classList.remove('active');
+            } else {
+                // Switch to English
+                langToggle.classList.add('en-active');
+                bioEs.classList.remove('active');
+                bioEn.classList.add('active');
+
+                langOptions[0].classList.remove('active');
+                langOptions[1].classList.add('active');
+            }
+        });
+
+        // Allow clicking the text labels "ES" / "EN" to toggle
+        langOptions.forEach(option => {
+            option.addEventListener('click', function () {
+                const lang = this.getAttribute('data-lang');
+                if (lang === 'en' && !langToggle.classList.contains('en-active')) {
+                    langToggle.click();
+                } else if (lang === 'es' && langToggle.classList.contains('en-active')) {
+                    langToggle.click();
+                }
+            });
+        });
+    }
 });
