@@ -154,16 +154,58 @@ body {
     /* Keep focus on face */
 }
 
-/* Mobile Menu Button - Hidden on Desktop */
-.mobile-menu-btn {
+/* Mobile Header - Hidden on Desktop */
+.mobile-header {
     display: none;
     position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: var(--bg-sidebar);
+    z-index: 90;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.mobile-socials {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.mobile-socials a {
+    color: var(--text-main);
+    font-size: 20px;
+}
+
+.mobile-logo {
+    text-align: center;
+}
+
+.mobile-logo h1 {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.mobile-logo p {
+    font-family: var(--font-serif);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-main);
+    margin-top: 4px;
+}
+
+.mobile-menu-btn {
     background: transparent;
     border: none;
-    font-size: 24px;
+    font-size: 28px;
     cursor: pointer;
     color: var(--text-main);
 }
@@ -322,7 +364,8 @@ body {
     background: rgba(255, 255, 255, 0.6);
     padding: 20px 25px;
     border-radius: 12px;
-    border-left: 4px solid var(--accent-color);
+    border-left: 4px solid var(--text-main);
+    /* Changed from blue accent to black */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -342,13 +385,6 @@ body {
     letter-spacing: 1px;
 }
 
-.curious-block h3 i {
-    color: var(--accent-color);
-    font-size: 16px;
-    width: 20px;
-    text-align: center;
-}
-
 .bio-list {
     list-style: none;
     padding-left: 0;
@@ -357,23 +393,14 @@ body {
 .bio-list li {
     font-size: 14px;
     line-height: 1.6;
-    color: var(--text-muted);
+    color: var(--text-main);
+    /* Changed to white/main color */
     margin-bottom: 8px;
     position: relative;
-    padding-left: 15px;
 }
 
 .bio-list li:last-child {
     margin-bottom: 0;
-}
-
-.bio-list li::before {
-    content: "•";
-    color: var(--accent-color);
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: bold;
 }
 
 .bio-list li strong {
@@ -453,32 +480,42 @@ body {
 
 .gallery-container {
     display: grid;
-    /* This creates a fluid grid where items can be different heights later */
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 40px;
-    /* Increased gap to create larger "framed" spacing */
-    align-items: start;
-    /* critical for different image heights */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    /* Strong uniform gap on all sides for the "frame" look */
+    width: 100%;
 }
 
 .gallery-item {
     width: 100%;
-    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    /* Forces all images to be portrait rectangles */
     position: relative;
+    overflow: hidden;
+    /* Starting state for animation */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.gallery-item.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .gallery-item img {
     width: 100%;
-    height: auto;
-    /* allows images to keep aspect ratio and have different sizes */
+    height: 100%;
     display: block;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    /* Fills the rectangle perfectly without stretching */
+    object-position: top;
+    /* Prevents faces from being cropped too much if it's tall */
+    transition: transform 0.4s ease;
 }
 
 .gallery-item:hover img {
-    transform: scale(1.03);
-    /* subtle zoom on hover */
+    transform: scale(1.02);
 }
 
 /* Contact Section */
@@ -554,8 +591,8 @@ body {
         flex-direction: column;
     }
 
-    .mobile-menu-btn {
-        display: block;
+    .mobile-header {
+        display: flex;
     }
 
     .sidebar {
@@ -565,6 +602,8 @@ body {
         height: 100vh;
         transition: left 0.3s ease-in-out;
         box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 200;
+        /* Ensure sidebar covers header when open */
     }
 
     .sidebar.open {
@@ -572,8 +611,14 @@ body {
     }
 
     .main-content {
-        height: 100vh;
+        margin-top: 90px;
+        /* Offset for mobile header */
+        height: calc(100vh - 90px);
         width: 100%;
+    }
+
+    .hero-image-container {
+        height: calc(100vh - 90px);
     }
 
     .contact-section,
@@ -595,5 +640,10 @@ body {
 
     .reel-section {
         padding: 4rem 1rem;
+    }
+
+    .gallery-container {
+        grid-template-columns: 1fr;
+        /* Single column on mobile */
     }
 }
