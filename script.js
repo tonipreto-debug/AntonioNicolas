@@ -80,4 +80,30 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Gallery Scroll Animation (Intersection Observer)
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    if (galleryItems.length > 0) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Trigger when 15% of the image is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add visible class to trigger CSS animation
+                    entry.target.classList.add('visible');
+                    // Stop observing once it has animated in
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        galleryItems.forEach(item => {
+            observer.observe(item);
+        });
+    }
 });
+
