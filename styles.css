@@ -1,0 +1,599 @@
+/* Base Styles & Resets */
+:root {
+    --bg-sidebar: #e8e8e8;
+    --text-main: #111111;
+    --text-muted: #555555;
+    --accent-color: #000000;
+    /* Blue for active link */
+    --font-sans: 'Inter', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: var(--font-sans);
+    color: var(--text-main);
+    background-color: var(--bg-sidebar);
+}
+
+/* Layout */
+.layout-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 300px;
+    background-color: var(--bg-sidebar);
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.sidebar-header h1 {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+}
+
+.sidebar-header .subtitle {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--text-muted);
+}
+
+.main-nav {
+    margin-top: -60px;
+    /* Adjust vertical centering */
+}
+
+.main-nav ul {
+    list-style: none;
+}
+
+.main-nav li {
+    margin-bottom: 20px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--accent-color);
+}
+
+.sidebar-footer {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.social-links a {
+    color: var(--text-main);
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+.copyright a {
+    color: var(--text-main);
+    text-decoration: underline;
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1;
+    background-color: #000;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.content-section {
+    display: none;
+    width: 100%;
+    height: 100vh;
+}
+
+.content-section.active {
+    display: flex;
+    animation: smoothFadeIn 0.8s ease-out;
+}
+
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image-container {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    /* Keep focus on face */
+}
+
+/* Mobile Menu Button - Hidden on Desktop */
+.mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+/* General Layout for Content Sections (Bio & Contact) */
+.split-section {
+    background-color: var(--bg-sidebar);
+}
+
+.split-info-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 4rem;
+    /* Adjusted padding for better text alignment */
+    color: var(--text-main);
+    overflow-y: auto;
+    /* Allow scrolling within the text half if content is long */
+}
+
+.split-image-container {
+    flex: 1;
+    height: 100vh;
+}
+
+.split-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Bio Section Specifics */
+.bio-section {
+    background-color: var(--bg-sidebar);
+}
+
+.bio-info-container {
+    flex: 1;
+    padding: 4rem;
+    color: var(--text-main);
+    overflow-y: auto;
+    height: 100vh;
+}
+
+/* Language Toggle */
+.language-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+    gap: 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.lang-option {
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.lang-option.active {
+    color: var(--text-main);
+}
+
+.toggle-switch {
+    width: 50px;
+    height: 26px;
+    background-color: #333;
+    /* Darker than sidebar for contrast */
+    border-radius: 13px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* By default, slider is on the left (ES). When "en" active, move right */
+.toggle-switch.en-active .toggle-slider {
+    transform: translateX(24px);
+}
+
+/* Bio Content wrapper */
+.bio-content-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.bio-content {
+    display: none;
+    /* Hidden by default */
+    animation: smoothFadeIn 0.5s ease-out forwards;
+}
+
+.bio-content.active {
+    display: block;
+    /* Show active language */
+}
+
+.bio-block {
+    margin-bottom: 25px;
+}
+
+.bio-block h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bio-block p,
+.bio-list li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-main);
+    /* Updated to main text color (white) */
+}
+
+.bio-list {
+    list-style-type: none;
+    /* Removes the bullet points */
+    padding-left: 0;
+    margin: 0;
+}
+
+.bio-list li {
+    margin-bottom: 5px;
+}
+
+.bio-list strong {
+    color: var(--text-main);
+    /* Ensures bolded titles are also white */
+}
+
+/* Keep previous technical data tight */
+.bio-block:last-child p {
+    margin-bottom: 3px;
+}
+
+/* Curious Bio Block Styling */
+.curious-block {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px 25px;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.curious-block:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.curious-block h3 {
+    font-size: 15px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.curious-block h3 i {
+    color: var(--accent-color);
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+.bio-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.bio-list li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.bio-list li:last-child {
+    margin-bottom: 0;
+}
+
+.bio-list li::before {
+    content: "•";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+}
+
+.bio-list li strong {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.bio-image-container {
+    flex: 1;
+    height: 100vh;
+}
+
+.bio-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Reel Section */
+.reel-section {
+    background-color: var(--bg-sidebar);
+    display: none;
+    /* Handled by JS */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.reel-section.active {
+    display: flex;
+    animation: smoothFadeIn 0.8s ease-out;
+}
+
+.reel-info-container {
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.reel-video-container {
+    width: 100%;
+    max-width: 1000px;
+    /* Limit maximum width for very wide screens */
+    background-color: #000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    /* Add slight shadow for depth */
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    /* 16:9 Aspect Ratio */
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Gallery Section */
+.gallery-section {
+    background-color: var(--bg-sidebar);
+    padding: 3rem;
+    overflow-y: auto;
+    /* allow scrolling within gallery */
+}
+
+.gallery-container {
+    display: grid;
+    /* This creates a fluid grid where items can be different heights later */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+    /* Increased gap to create larger "framed" spacing */
+    align-items: start;
+    /* critical for different image heights */
+}
+
+.gallery-item {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    /* allows images to keep aspect ratio and have different sizes */
+    display: block;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.03);
+    /* subtle zoom on hover */
+}
+
+/* Contact Section */
+.contact-section {
+    /* We inherit display: flex from .content-section.active */
+    background-color: var(--bg-sidebar);
+}
+
+.contact-info-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    color: var(--text-main);
+}
+
+.contact-info-container h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 14px;
+}
+
+.contact-details p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-details i {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+.contact-image-container {
+    flex: 1;
+    height: 100vh;
+}
+
+.contact-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Animations */
+@keyframes smoothFadeIn {
+    0% {
+        opacity: 0;
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 900px) {
+    .layout-container {
+        flex-direction: column;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -300px;
+        top: 0;
+        height: 100vh;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .main-content {
+        height: 100vh;
+        width: 100%;
+    }
+
+    .contact-section,
+    .bio-section {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .contact-info-container,
+    .bio-info-container {
+        padding: 4rem 2rem;
+    }
+
+    .contact-image-container,
+    .bio-image-container {
+        height: 60vh;
+        order: -1;
+    }
+
+    .reel-section {
+        padding: 4rem 1rem;
+    }
+}
