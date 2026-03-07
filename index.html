@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antonio Nicolás Preto Ford - Actor</title>
-    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="styles.css?v=22">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +27,10 @@
                     aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
             <div class="mobile-logo">
-                <h1>ANTONIO NICOLÁS<br>PRETO FORD</h1>
-                <p>Actor</p>
+                <a href="#inicio" class="logo-link">
+                    <h1>ANTONIO NICOLÁS<br>PRETO FORD</h1>
+                    <p>Actor</p>
+                </a>
             </div>
             <button class="mobile-menu-btn" id="mobile-menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -38,15 +40,17 @@
         <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <h1>ANTONIO<br>NICOLÁS<br>PRETO FORD</h1>
-                <p class="subtitle">Actor</p>
+                <a href="#inicio" class="logo-link">
+                    <h1>ANTONIO<br>NICOLÁS<br>PRETO FORD</h1>
+                    <p class="subtitle">Actor</p>
+                </a>
             </div>
 
             <nav class="main-nav">
                 <ul>
                     <li><a href="#inicio" class="active">INICIO</a></li>
                     <li><a href="#reel">REEL</a></li>
-                    <li><a href="#bio">BIO</a></li>
+                    <li><a href="#cv">CV</a></li>
                     <li><a href="#galeria">GALERÍA</a></li>
                     <li><a href="#contacto">CONTACTO</a></li>
                 </ul>
@@ -70,8 +74,11 @@
         <!-- Main Content Area -->
         <main class="main-content">
             <section id="inicio" class="content-section active">
-                <div class="hero-image-container">
-                    <img src="IMG_1619.jpeg" alt="Antonio Nicolás Preto Ford" class="hero-image">
+                <div class="hero-image-container hero-desktop">
+                    <img src="images/portada_final_3.jpg" alt="Antonio Nicolás Preto Ford Cover" class="hero-image">
+                </div>
+                <div class="hero-image-container hero-mobile">
+                    <img src="images/portada_mobile.jpg" alt="Antonio Nicolás Preto Ford Mobile" class="hero-image">
                 </div>
             </section>
 
@@ -96,8 +103,8 @@
                 </div>
             </section>
 
-            <!-- BIO Section -->
-            <section id="bio" class="content-section bio-section">
+            <!-- CV Section (formerly BIO) -->
+            <section id="cv" class="content-section bio-section">
                 <div class="bio-info-container">
                     <!-- Language Toggle -->
                     <div class="language-toggle">
@@ -126,7 +133,7 @@
                                 <ul class="bio-list">
                                     <li><strong>Rango de Edad:</strong> 18 - 25 años</li>
                                     <li><strong>Apariencia:</strong> 185 cm | Ojos Azul/Verdoso | Pelo Rubio Oscuro
-                                        Ondulado | Complexión Atlética Mediana</li>
+                                        Ondulado | Complexión Atlética</li>
                                 </ul>
                             </div>
 
@@ -135,8 +142,8 @@
                                 <ul class="bio-list">
                                     <li><strong>Grado:</strong> Interpretación (en curso) – ESADIB (Escola Superior
                                         d'Art Dramàtic de les Illes Balears)</li>
-                                    <li><strong>Cine:</strong> Actor Protagonista (Main Role) en cortometraje [Añadir
-                                        Título]</li>
+                                    <li><strong>Cine:</strong> Actor Protagonista (Main Role) en cortometraje "HOGAR
+                                        SALADO"</li>
                                 </ul>
                             </div>
 
@@ -178,7 +185,7 @@
                                 <ul class="bio-list">
                                     <li><strong>Age Range:</strong> 18 - 25 years</li>
                                     <li><strong>Appearance:</strong> 185 cm (6'1") | Blue/Green Eyes | Dark Blonde Wavy
-                                        Hair | Medium Athletic Build</li>
+                                        Hair | Athletic Build</li>
                                 </ul>
                             </div>
 
@@ -187,7 +194,7 @@
                                 <ul class="bio-list">
                                     <li><strong>BA:</strong> Dramatic Arts (in progress) – ESADIB (Higher School of
                                         Dramatic Arts of the Balearic Islands)</li>
-                                    <li><strong>Film:</strong> Lead Actor in short film [Insert Title]</li>
+                                    <li><strong>Film:</strong> Lead Actor in short film "HOGAR SALADO"</li>
                                 </ul>
                             </div>
 
@@ -215,25 +222,35 @@
                 </div>
 
                 <div class="bio-image-container">
-                    <!-- Placeholder using the same image for now -->
-                    <img src="IMG_1619.jpeg" alt="Antonio Nicolás Preto Ford Bio" class="bio-image">
+                    <img src="images/cv_profile.jpg" alt="Antonio Nicolás Preto Ford CV" class="bio-image">
                 </div>
             </section>
 
             <!-- GALERÍA Section -->
             <section id="galeria" class="content-section gallery-section">
                 <div class="gallery-container">
-                    <div class="gallery-item"><img src="images/media__1772709816356.jpg" loading="lazy"
-                            alt="Antonio Nicolás Preto Ford - Gallery Image 1"></div>
-                    <div class="gallery-item"><img src="images/media__1772709816438.jpg" loading="lazy"
-                            alt="Antonio Nicolás Preto Ford - Gallery Image 2"></div>
-                    <div class="gallery-item"><img src="images/media__1772709816499.jpg" loading="lazy"
-                            alt="Antonio Nicolás Preto Ford - Gallery Image 3"></div>
-                    <div class="gallery-item"><img src="images/media__1772709816517.jpg" loading="lazy"
-                            alt="Antonio Nicolás Preto Ford - Gallery Image 4"></div>
-                    <div class="gallery-item"><img src="images/media__1772709816569.jpg" loading="lazy"
-                            alt="Antonio Nicolás Preto Ford - Gallery Image 5"></div>
-                    <!-- Placeholders to keep the masonry look balanced if desired, or just leave the 5 photos -->
+                    <div class="gallery-item"><img src="images/gal_new_1.jpg" loading="lazy"
+                            alt="Antonio Nicolás Preto Ford - Gallery Image 1" class="lightbox-trigger"></div>
+                    <div class="gallery-item"><img src="images/gal_new_2.jpg" loading="lazy"
+                            alt="Antonio Nicolás Preto Ford - Gallery Image 2" class="lightbox-trigger"></div>
+                    <div class="gallery-item"><img src="images/gal_new_3.jpg" loading="lazy"
+                            alt="Antonio Nicolás Preto Ford - Gallery Image 3" class="lightbox-trigger"></div>
+                    <div class="gallery-item"><img src="images/gal_new_4.jpg" loading="lazy"
+                            alt="Antonio Nicolás Preto Ford - Gallery Image 4" class="lightbox-trigger"></div>
+                    <div class="gallery-item"><img src="images/gal_new_5.jpg" loading="lazy"
+                            alt="Antonio Nicolás Preto Ford - Gallery Image 5" class="lightbox-trigger"></div>
+                    <div class="gallery-item"><img src="images/gal_new_6.jpg" loading="lazy"
+                            alt="Antonio Nicolás Preto Ford - Gallery Image 6" class="lightbox-trigger"></div>
+                    <div class="gallery-item"><img src="images/gal_new_7.jpg" loading="lazy"
+                            alt="Antonio Nicolás Preto Ford - Gallery Image 7" class="lightbox-trigger"></div>
+                    <div class="gallery-item"><img src="images/gal_new_8.jpg" loading="lazy"
+                            alt="Antonio Nicolás Preto Ford - Gallery Image 8" class="lightbox-trigger"></div>
+                    <div class="gallery-item"><img src="images/gal_new_9.jpg" loading="lazy"
+                            alt="Antonio Nicolás Preto Ford - Gallery Image 9" class="lightbox-trigger"></div>
+                    <div class="gallery-item"><img src="images/gal_new_10.jpg" loading="lazy"
+                            alt="Antonio Nicolás Preto Ford - Gallery Image 10" class="lightbox-trigger"></div>
+                    <div class="gallery-item"><img src="images/portada_mobile.jpg" loading="lazy"
+                            alt="Antonio Nicolás Preto Ford - Gallery Image 11" class="lightbox-trigger"></div>
                 </div>
             </section>
 
@@ -261,17 +278,28 @@
                 <div class="contact-info-container">
                     <h2>CONTACTO</h2>
                     <div class="contact-details">
-                        <p><i class="fa-solid fa-envelope"></i> toni.ford2005@gmail.com</p>
-                        <p><i class="fab fa-whatsapp"></i> 601 713 202</p>
-                        <p><i class="fab fa-instagram"></i> @toni.pretoo</p>
+                        <p><a href="mailto:toni.ford2005@gmail.com" class="contact-link"><i
+                                    class="fa-solid fa-envelope"></i> toni.ford2005@gmail.com</a></p>
+                        <p><a href="https://wa.me/34601713202" target="_blank" rel="noopener noreferrer"
+                                class="contact-link"><i class="fab fa-whatsapp"></i> 601 713 202</a></p>
+                        <p><a href="https://instagram.com/toni.pretoo" target="_blank" rel="noopener noreferrer"
+                                class="contact-link"><i class="fab fa-instagram"></i> @toni.pretoo</a></p>
                     </div>
                 </div>
                 <!-- We also put an image on the right half, same as inicio -->
                 <div class="contact-image-container">
-                    <img src="IMG_1619.jpeg" alt="Antonio Nicolás Preto Ford" class="contact-image">
+                    <img src="images/contacto.jpg" alt="Antonio Nicolás Preto Ford Contact" class="contact-image">
                 </div>
             </section>
         </main>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <button class="lightbox-btn lightbox-prev" id="lightbox-prev">&#10094;</button>
+        <img class="lightbox-content" id="lightbox-img">
+        <button class="lightbox-btn lightbox-next" id="lightbox-next">&#10095;</button>
     </div>
 
     <script src="script.js"></script>
